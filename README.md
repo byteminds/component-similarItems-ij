@@ -9,6 +9,8 @@ See deployment for notes on how to deploy the project on a live system.
 ### Prerequisites
 In your terminal,
 - [ ] `npm install`
+
+Follow intructions from mongodb website:
 - [ ] `https://docs.mongodb.com/guides/server/install/`
 
 ### Starting app
