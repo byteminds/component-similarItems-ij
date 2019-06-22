@@ -1,35 +1,39 @@
-/*
-const itemSchema = new Schema({
-  product: String,
-  image: {
-    attribute_src: String,
-    attribute_alt: String,
-    attribute_id: String
-  },
-  description: String,
-  add_to_cart: String,
-  stars: String,
-  reviews: Number,
-  price: Number,
-  shipping: String,
-  seller: String,
-  camera_description: String,
-  screen_size: String,
-  dimensions: String,
-  weight: String,
-  operating_system: String
-});
-*/
 const faker = require('faker');
 const save = require('./database/index.js');
-/*
-console.log(faker.fake("{{name.firstName}} {{name.lastName}}"));
-*/
-let recordCount = 100;
-// seeding the database
-// not sure there's a lot Faker can do for me here that resembles anything like real data.
-// but maybe it will do for MVP.  
-// The image attribute_src can't be from Faker though.  They have to be linked to at the AWS S3 bucket.
-// the easiest way to get that working is to number the image names sequentially and just 
-// increment the number for each document, 1 - 100. but!!! idk how the AWS bucket works yet...
 
+const seedDb = () => {
+  let documentLimit = 100;
+  let seeds = [];
+
+  while (documentLimit > 0) { // generate a document object (seed).
+    // add image attributes data:
+    let seed = {};
+    let lorem5 = faker.lorem.words(5);
+
+    seed.product = 'iPhone 6s, ' + lorem5; // <<- randomize some of the title/product info
+    seed.imageSrc = 'https://service-similar-products-ij.s3-us-west-1.amazonaws.com/' + documentLimit + '.jpg';
+    seed.imageAlt = 'iPhone 6s, ' + lorem5;
+    seed.imageId = 'comparison-image';
+    seed.description = 'iPhone 6s, ' + lorem5 + '. ' + faker.lorem.sentence;
+    seed.addToCart = '#';
+    seed.stars = faker.random.number(5); // random number 0 - 5
+    seed.reviews = faker.random.number(5000);
+    seed.price = faker.random.number(500);
+    seed.shipping = faker.lorem.words(3);
+    seed.seller = faker.company.companyName;
+    seed.cameraDescription = faker.random.number(21) + 'MP';
+    seed.screenSize = '4.7 in';
+    seed.dimensions = '5.44 x 0.28 x 2.64 in';
+    seed.weight = '5.04 ounces';
+    seed.operatingSystem = 'ios';
+    // push completed seed to array of objects (seeds).
+    seeds.push(seed);
+    // decrement our documentLimit by 1
+    documentLimit -= 1;
+  }
+  console.log('>>>>>>>>>>>>>>> seeds: ', seeds);
+  // once documentLimit is === 0, call our 'save' function to add seeds to db
+  save.save(seeds);
+};
+
+seedDb();

@@ -9,12 +9,13 @@ See deployment for notes on how to deploy the project on a live system.
 ### Prerequisites
 In your terminal,
 - [ ] `npm install`
-- [ ] `brew services start mongo`
+- [ ] `https://docs.mongodb.com/guides/server/install/`
 
 ### Starting app
 In your terminal,
 - [ ] Run webpack `npm run react-dev`
 - [ ] Start your server `npm run start`
+- [ ] Seed DB `npm run db-seeder`
 
 ## Deployment
 To be added later.
@@ -24,5 +25,5 @@ To be added later.
 - MongoDB
 - Webpack
 
-## License
+#### License
 This project is licensed under the MIT License - see the LICENSE.md file for details
