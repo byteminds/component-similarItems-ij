@@ -11,7 +11,7 @@ const seedDb = () => {
     let lorem5 = faker.lorem.words(5);
 
     seed.product = 'iPhone 6s, ' + lorem5; // <<- randomize some of the title/product info
-    seed.imageSrc = 'https://service-similar-products-ij.s3-us-west-1.amazonaws.com/' + documentLimit + '.jpg';
+    seed.imageSrc = 'https://service-similar-products-ij.s3-us-west-1.amazonaws.com/' + faker.random.number(100) + '.jpg';
     seed.imageAlt = 'iPhone 6s, ' + lorem5;
     seed.imageId = 'comparison-image';
     seed.description = 'iPhone 6s, ' + lorem5 + '. ' + faker.lorem.sentence;
