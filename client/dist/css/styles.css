@@ -1,3 +1,42 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: #111;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+th,
+td {
+  vertical-align: text-top;
+  max-width: 349px;
+  padding: 6px 14px 5px;
+}
+
+.comparison_attribute_name_column {
+  font-size: 13px;
+  line-height: 19px;
+  white-space: nowrap;
+}
+
+img {
+  vertical-align: text-top;
+  max-width: 100%;
+}
+
+.a-color-state {
+  font-size: 21px;
+  line-height: 1.3;
+  padding: 0 0 4px;
+  margin: 0;
+  color: #c45500;
+}
+
 .a-tab-container {
   max-width: 100%;
 }
@@ -7,24 +46,67 @@
 }
 
 .a-box-inner {
-  border: 1px solid #eee;
-  padding: 1em;
-  margin: 1em 0;
+  border: 1px solid #e7e7e7;
   max-width: 100%;
 }
 
 .a-box-inner img {
   width: 100%;
+  max-width: 300px;
 }
 
-.comparison_table_image_row th .comparison_table_image_row td {
-  padding: 1em;
+.comparison_table_image_row th {
+  padding: 1em .5em;
 }
 
-.comparison_table_image_row th:first-child {
-  width: 120px;
+.comparison_table_image_row div {
+  padding: 1em 0;
+  min-width: 200px;
+  text-align: left;
+}
+
+.comparison_title {
+  font-size: 13px;
+  color: #0066c0;
+  font-weight: 400;
+}
+
+#itemTitle-0 {
+  color: #111;
+}
+
+#itemTitle-0:before {
+  content: "This item ";
+  font-weight: 700;
+}
+
+.min-width-120 {
+  max-width: 350px;
+  min-width: 120px;
 }
 
 .comparison_table_image_row th {
   background: #fff;
+}
+
+.comparison_add_to_cart_buttons {
+  border-bottom: 1px solid #e7e7e7;
+}
+
+button {
+  background: #f4d078;
+  background: -webkit-linear-gradient(top, #f7dfa5, #f0c14b);
+  background: linear-gradient(to bottom, #f7dfa5, #f0c14b);
+  border-color: #a88734 #9c7e31 #846a29;
+  color: #111;
+  font-size: 13px;
+  line-height: 1;
+  padding: 0 10px 0 11px;
+  text-align: center;
+  white-space: nowrap;
+  height: 29px;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .6) inset;
+  border-radius: 3px;
+  vertical-align: middle;
+  margin-bottom: 1em;
 }

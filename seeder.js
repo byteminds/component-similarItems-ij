@@ -8,13 +8,13 @@ const seedDb = () => {
   while (documentLimit > 0) { // generate a document object (seed).
     // add image attributes data:
     let seed = {};
-    let lorem5 = faker.lorem.words(5);
+    let lorem7 = faker.lorem.words(7);
 
-    seed.product = 'iPhone 6s, ' + lorem5; // <<- randomize some of the title/product info
+    seed.product = 'Apple iPhone 6, ' + lorem7; // <<- randomize some of the title/product info
     seed.imageSrc = 'https://service-similar-products-ij.s3-us-west-1.amazonaws.com/' + documentLimit + '.jpg';
-    seed.imageAlt = 'iPhone 6s, ' + lorem5;
+    seed.imageAlt = 'Apple iPhone 6, ' + lorem7;
     seed.imageId = 'comparison-image';
-    seed.description = 'iPhone 6s, ' + lorem5 + '. ' + faker.lorem.sentence;
+    seed.description = 'Apple iPhone 6, ' + lorem7 + '. ' + faker.lorem.sentence;
     seed.addToCart = '#';
     seed.stars = faker.random.number(5); // random number 0 - 5
     seed.reviews = faker.random.number(5000);

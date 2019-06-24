@@ -18,7 +18,7 @@ app.get('/similaritems', function (req, res) {
         product: 1,
         stars: -1
       },
-      limit: 7
+      limit: 6
     },
     function (err, items) {
       if (err) {
