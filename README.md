@@ -10,14 +10,13 @@ See deployment for notes on how to deploy the project on a live system.
 In your terminal,
 - [ ] `npm install`
 
-Follow intructions from mongodb website:
+Follow intructions from mongodb website to install locally
 - [ ] `https://docs.mongodb.com/guides/server/install/`
 
 ### Starting app
 In your terminal,
-- [ ] Run webpack `npm run react-dev`
-- [ ] Start your server `npm run start`
 - [ ] Seed DB `npm run db-seeder`
+- [ ] Start your server `npm run start`
 
 ## Deployment
 To be added later.
