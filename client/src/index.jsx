@@ -40,19 +40,21 @@ export default class App extends Component {
                   <tr className="comparison_table_image_row">
                     <th className="min-width-120">&nbsp; </th>
                     {items.map(item => (
-                      <th id={'itemBox-' + items.indexOf(item)} key={item._id}>
-                        <img src={item.imageSrc} />
-                        <div id={'itemTitle-' + items.indexOf(item)} className="comparison_title">
-                          {item.product}
+                      <th id={'itemBox-' + items.indexOf(item)} key={'itemBox-' + item._id}>
+                        <div className="sim-link">
+                          <img src={item.imageSrc} />
+                          <div id={'itemTitle-' + items.indexOf(item)} className="comparison_title">
+                            {item.product}
+                          </div>
                         </div>
                       </th>
                     ))}
                   </tr>
 
                   <tr className="comparison_add_to_cart_buttons">
-                    <td className="min-width-120">&nbsp; </td>
+                    <th className="min-width-120">&nbsp; </th>
                     {items.map(item => (
-                      <td id={'itemButton-' + items.indexOf(item)}>
+                      <td id={'itemButton-' + items.indexOf(item)} key={'itemButton-' + item._id}>
                         <button>Add to Cart</button>
                       </td>
                     ))}
@@ -63,8 +65,96 @@ export default class App extends Component {
                       Customer Rating
                     </th>
                     {items.map(item => (
-                      <td id={'itemRatings-' + items.indexOf(item)}>
-                        {item.stars} out of 5 stars ({item.reviews})
+                      <td id={'itemRatings-' + items.indexOf(item)} key={'itemRatings-' + item._id}>
+                        {item.stars} out of 5 stars <span className="blue strong">({item.reviews})</span>
+                      </td>
+                    ))}
+                  </tr>
+
+                  <tr id="comparison_price_row">
+                    <th className="comparison_attribute_name_column comparison_table_first_col" role="rowheader">
+                      Price
+                    </th>
+                    {items.map(item => (
+                      <td id={'itemPrice-' + items.indexOf(item)} key={'itemPrice-' + item._id}>
+                        <span className="a-price a-price-symbol">$</span><span className="a-price-whole">{item.price}</span><span className="a-price-fraction">99</span>
+                      </td>
+                    ))}
+                  </tr>
+
+                  <tr id="comparison_shipping_info_row">
+                    <th className="comparison_attribute_name_column comparison_table_first_col" role="rowheader">
+                      Shipping
+                    </th>
+                    {items.map(item => (
+                      <td id={'itemShipping-' + items.indexOf(item)} key={'itemShipping-' + item._id}>
+                        {/* item.shipping */}FREE Shipping on orders over $25
+                      </td>
+                    ))}
+                  </tr>
+
+                  <tr id="comparison_sold_by_row">
+                    <th className="comparison_attribute_name_column comparison_table_first_col" role="rowheader">
+                      Sold By
+                    </th>
+                    {items.map(item => (
+                      <td id={'itemSeller-' + items.indexOf(item)} key={'itemSeller-' + item._id}>
+                        <span className="blue">{item.seller}</span>
+                      </td>
+                    ))}
+                  </tr>
+
+                  <tr id="camera_description_row">
+                    <th className="a-span3 comparison_attribute_name_column comparison_table_first_col" role="rowheader">
+                      Camera Description
+                    </th>
+                    {items.map(item => (
+                      <td id={'cameraDescription-' + items.indexOf(item)} key={'cameraDescription-' + item._id}>
+                        {item.cameraDescription}
+                      </td>
+                    ))}
+                  </tr>
+
+                  <tr id="screen_size_row">
+                    <th className="a-span3 comparison_attribute_name_column comparison_table_first_col" role="rowheader">
+                      Screen Size
+                    </th>
+                    {items.map(item => (
+                      <td id={'screenSize-' + items.indexOf(item)} key={'screenSize-' + item._id}>
+                        {item.screenSize}
+                      </td>
+                    ))}
+                  </tr>
+
+                  <tr id="item_dimensions_row">
+                    <th className="a-span3 comparison_attribute_name_column comparison_table_first_col" role="rowheader">
+                      Item Dimensions
+                    </th>
+                    {items.map(item => (
+                      <td id={'dimensions-' + items.indexOf(item)} key={'dimensions-' + item._id}>
+                        {item.dimensions}
+                      </td>
+                    ))}
+                  </tr>
+
+                  <tr id="item_weight_row">
+                    <th className="a-span3 comparison_attribute_name_column comparison_table_first_col" role="rowheader">
+                      Item Weight
+                    </th>
+                    {items.map(item => (
+                      <td id={'weight-' + items.indexOf(item)} key={'weight-' + item._id}>
+                        {item.weight}
+                      </td>
+                    ))}
+                  </tr>
+
+                  <tr id="item_operating_system_row">
+                    <th className="a-span3 comparison_attribute_name_column comparison_table_first_col" role="rowheader">
+                      Operating System
+                    </th>
+                    {items.map(item => (
+                      <td id={'operatingSystem-' + items.indexOf(item)} key={'operatingSystem-' + item._id}>
+                        {item.operatingSystem}
                       </td>
                     ))}
                   </tr>

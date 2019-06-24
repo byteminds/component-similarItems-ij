@@ -58,8 +58,8 @@ let save = items => {
       let price = item.price;
       let shipping = item.shipping;
       let seller = item.seller;
-      let camera = item.cameraDescription;
-      let screen = item.screenSize;
+      let cameraDescription = item.cameraDescription;
+      let screenSize = item.screenSize;
       let dimensions = item.dimensions;
       let weight = item.weight;
       let operatingSystem = item.operatingSystem;
@@ -76,8 +76,8 @@ let save = items => {
         price,
         shipping,
         seller,
-        camera,
-        screen,
+        cameraDescription,
+        screenSize,
         dimensions,
         weight,
         operatingSystem

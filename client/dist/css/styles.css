@@ -2,6 +2,15 @@
   box-sizing: border-box;
 }
 
+.blue {
+  color: #0066c0;
+  cursor: pointer;
+}
+
+.strong {
+  font-weight: 700;
+}
+
 body {
   font-family: Arial, sans-serif;
   color: #111;
@@ -11,22 +20,67 @@ table {
   border-collapse: collapse;
 }
 
+table.a-bordered tr:nth-child(odd):not(.comparison_table_image_row) {
+  background-color: #f6f6f6;
+}
+
+table.a-bordered tr:not(.comparison_table_image_row) {
+  border-bottom: 1px solid #e7e7e7;
+}
+
+table.a-bordered tr:last-child {
+  border-bottom: none !important;
+}
+
+.comparison_table tr:nth-child(odd) td:first-of-type {
+  background-color: #ffffde;
+}
+
+.comparison_table tr:nth-child(even):not(.comparison_add_to_cart_buttons) td:first-of-type {
+  background-color: #ffe;
+}
+
 th,
 td {
   vertical-align: text-top;
+  min-width: 225px;
   max-width: 349px;
   padding: 6px 14px 5px;
+  font-size: 13px;
+  line-height: 19px;
+}
+
+#comparison_customer_rating_row {
+  font-size: 13px;
+  line-height: 19px;
 }
 
 .comparison_attribute_name_column {
   font-size: 13px;
-  line-height: 19px;
   white-space: nowrap;
+  min-width: 188px;
+  text-align: left;
 }
 
 img {
   vertical-align: text-top;
-  max-width: 100%;
+  min-width: 254px;
+  max-width: 350px;
+}
+
+.sim-link {
+  color: #0066c0;
+  cursor: pointer;
+}
+
+.sim-link:hover {
+  text-decoration: underline;
+  color: #c45500;
+}
+
+#itemBox-0 .sim-link:hover {
+  text-decoration: none;
+  cursor: unset;
 }
 
 .a-color-state {
@@ -67,7 +121,6 @@ img {
 
 .comparison_title {
   font-size: 13px;
-  color: #0066c0;
   font-weight: 400;
 }
 
@@ -109,4 +162,55 @@ button {
   border-radius: 3px;
   vertical-align: middle;
   margin-bottom: 1em;
+  cursor: pointer;
+}
+
+.a-price-symbol,
+.a-price-fraction {
+  top: -.5em;
+  font-size: 12px;
+  position: relative;
+}
+
+.a-price-whole {
+  font-size: 21px;
+}
+
+/* media queries */
+/* 
+   amazon reduces number of items depending 
+   on width of screen to a min of 4 (desktop) 
+*/
+@media screen and (max-width: 1899px) {
+
+  #itemBox-5,
+  #itemButton-5,
+  #itemRatings-5,
+  #itemPrice-5,
+  #itemShipping-5,
+  #itemSeller-5,
+  #cameraDescription-5,
+  #screenSize-5,
+  #dimensions-5,
+  #weight-5,
+  #operatingSystem-5 {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1630px) {
+
+  #itemBox-4,
+  #itemButton-4,
+  #itemRatings-4,
+  #itemPrice-4,
+  #itemShipping-4,
+  #itemSeller-4,
+  #cameraDescription-4,
+  #screenSize-4,
+  #dimensions-4,
+  #weight-4,
+  #operatingSystem-4 {
+    display: none;
+  }
 }

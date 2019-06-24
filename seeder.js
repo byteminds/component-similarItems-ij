@@ -14,14 +14,13 @@ const seedDb = () => {
     seed.imageSrc = 'https://service-similar-products-ij.s3-us-west-1.amazonaws.com/' + documentLimit + '.jpg';
     seed.imageAlt = 'Apple iPhone 6, ' + lorem7;
     seed.imageId = 'comparison-image';
-    seed.description = 'Apple iPhone 6, ' + lorem7 + '. ' + faker.lorem.sentence;
-    seed.addToCart = '#';
+    seed.description = 'Apple iPhone 6, ' + lorem7 + '. ' + faker.lorem.sentence();
     seed.stars = faker.random.number(5); // random number 0 - 5
     seed.reviews = faker.random.number(5000);
     seed.price = faker.random.number(500);
     seed.shipping = faker.lorem.words(3);
-    seed.seller = faker.company.companyName;
-    seed.cameraDescription = faker.random.number(21) + 'MP';
+    seed.seller = faker.company.companyName();
+    seed.cameraDescription = '8 MP, ' + faker.lorem.words(3);
     seed.screenSize = '4.7 in';
     seed.dimensions = '5.44 x 0.28 x 2.64 in';
     seed.weight = '5.04 ounces';
