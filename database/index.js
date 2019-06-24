@@ -1,7 +1,8 @@
+// db connect, schema, model + save (a save 2 Db) function <- busy page!
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 // Map global promise (to get rid of warning)
-mongoose.Promise = global.Promise;
+//mongoose.Promise = global.Promise;
 
 // Connect to Mongo (remote Heroku-mLab) **********
 /*
@@ -15,9 +16,9 @@ mongoose
 
 // Connect to Mongo (localhost) *******************
 mongoose
-  .connect('mongodb://localhost/similarItems', { useNewUrlParser: true })
-  .then(() => console.log('database/index.js 19 > MongoDB Connected...'))
-  .catch(err => console.log('database/index.js 20 > Error: ', err));
+  .connect('mongodb://localhost/similaritems', { useNewUrlParser: true })
+  .then(() => console.log('database/index.js 20 > MongoDB Connected...'))
+  .catch(err => console.log('database/index.js 21 > Error: ', err));
 
 // Create Schema
 const itemSchema = new Schema({
@@ -39,7 +40,7 @@ const itemSchema = new Schema({
   operatingSystem: String
 });
 
-let Collection = mongoose.model('similarItems', itemSchema);
+const Item = mongoose.model('items', itemSchema);
 
 let save = items => {
   if (items) {
@@ -63,7 +64,7 @@ let save = items => {
       let weight = item.weight;
       let operatingSystem = item.operatingSystem;
       // then put it all together in a new object
-      let newItem = new Collection({
+      let newItem = new Item({
         product,
         imageSrc,
         imageAlt,
@@ -84,17 +85,17 @@ let save = items => {
 
       newItem.save().catch(err => {
         console.log(
-          'database/index.js 87 > Error creating new document: ',
+          'database/index.js 88 > Error creating new document: ',
           err
         );
       });
     });
   } else {
-    console.log('database/index.js 93 > Error creating new document');
+    console.log('database/index.js 94 > Error creating new document');
   }
 };
 
 module.exports = {
   save,
-  Collection
+  Item
 };

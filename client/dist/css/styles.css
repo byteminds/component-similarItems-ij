@@ -1,0 +1,30 @@
+.a-tab-container {
+  max-width: 100%;
+}
+
+.a-tab-container h3 {
+  margin: 0;
+}
+
+.a-box-inner {
+  border: 1px solid #eee;
+  padding: 1em;
+  margin: 1em 0;
+  max-width: 100%;
+}
+
+.a-box-inner img {
+  width: 100%;
+}
+
+.comparison_table_image_row th .comparison_table_image_row td {
+  padding: 1em;
+}
+
+.comparison_table_image_row th:first-child {
+  width: 120px;
+}
+
+.comparison_table_image_row th {
+  background: #fff;
+}
