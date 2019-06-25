@@ -67,7 +67,7 @@ export default class App extends Component {
                     </th>
                     {items.map(item => (
                       <td id={'itemRatings-' + items.indexOf(item)} key={'itemRatings-' + item._id}>
-                        <i className={'a-icon a-icon-star a-star-' + item.stars + ' a-spacing-none'}><span className="a-icon-alt">{item.stars + ' out of 5 stars '}</span><span className="blue">{'(' + item.reviews + ')'}</span></i>
+                        <i className={'a-icon a-icon-star a-star-' + item.stars + ' a-spacing-none'}><span className="a-icon-alt">{item.stars + ' out of 5 stars '}</span><span className="reviews blue">{'(' + item.reviews + ')'}</span></i>
                       </td>
                     ))}
                   </tr>
