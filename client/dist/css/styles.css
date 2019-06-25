@@ -94,19 +94,20 @@ td {
   text-align: left;
 }
 
-img {
-  vertical-align: text-top;
-  margin: auto;
-  width: 100%;
-  max-height: 350px;
-  max-width: 350px;
-}
-
 .sim-link {
   color: #0066c0;
   cursor: pointer;
   text-align: center;
   width: 100%;
+}
+
+.sim-link img {
+  vertical-align: text-top;
+  margin: auto;
+  padding-top: 5px;
+  width: 100%;
+  max-height: 350px;
+  max-width: 350px;
 }
 
 .sim-link:hover {
