@@ -18,6 +18,9 @@ body {
 
 table {
   border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  min-width: 1080px;
 }
 
 table.a-bordered tr:nth-child(odd):not(.comparison_table_image_row) {
@@ -43,11 +46,10 @@ table.a-bordered tr:last-child {
 th,
 td {
   vertical-align: text-top;
-  min-width: 225px;
-  max-width: 349px;
   padding: 6px 14px 5px;
   font-size: 13px;
   line-height: 19px;
+  width: 14.235%;
 }
 
 #comparison_customer_rating_row {
@@ -58,19 +60,22 @@ td {
 .comparison_attribute_name_column {
   font-size: 13px;
   white-space: nowrap;
-  min-width: 188px;
   text-align: left;
 }
 
 img {
   vertical-align: text-top;
-  min-width: 254px;
+  margin: auto;
+  width: 100%;
+  max-height: 350px;
   max-width: 350px;
 }
 
 .sim-link {
   color: #0066c0;
   cursor: pointer;
+  text-align: center;
+  width: 100%;
 }
 
 .sim-link:hover {
@@ -91,10 +96,6 @@ img {
   color: #c45500;
 }
 
-.a-tab-container {
-  max-width: 100%;
-}
-
 .a-tab-container h3 {
   margin: 0;
 }
@@ -104,24 +105,19 @@ img {
   max-width: 100%;
 }
 
-.a-box-inner img {
-  width: 100%;
-  max-width: 300px;
+.comparison_table_image_row {
+  padding-bottom: 1em;
 }
 
 .comparison_table_image_row th {
   padding: 1em .5em;
 }
 
-.comparison_table_image_row div {
-  padding: 1em 0;
-  min-width: 200px;
-  text-align: left;
-}
-
 .comparison_title {
   font-size: 13px;
   font-weight: 400;
+  text-align: left;
+  padding: 1em;
 }
 
 #itemTitle-0 {
@@ -131,11 +127,6 @@ img {
 #itemTitle-0:before {
   content: "This item ";
   font-weight: 700;
-}
-
-.min-width-120 {
-  max-width: 350px;
-  min-width: 120px;
 }
 
 .comparison_table_image_row th {
@@ -179,7 +170,8 @@ button {
 /* media queries */
 /* 
    amazon reduces number of items depending 
-   on width of screen to a min of 4 (desktop) 
+   on width of screen to a min of 4 items 
+   (desktop (smaller than width 1080px not tested)) 
 */
 @media screen and (max-width: 1899px) {
 
