@@ -28,7 +28,8 @@ export default class App extends Component {
       return <div>Loading...</div>;
     } else {
       return (
-        <React.Fragment>
+        <div id="comparisonWidget_feature_div">
+          <hr />
           <h2 className="a-color-state">Compare with similar items</h2>
           <br />
           <div className="a-tab-container">
@@ -66,7 +67,7 @@ export default class App extends Component {
                     </th>
                     {items.map(item => (
                       <td id={'itemRatings-' + items.indexOf(item)} key={'itemRatings-' + item._id}>
-                        {item.stars} out of 5 stars <span className="blue strong">({item.reviews})</span>
+                        <i className={'a-icon a-icon-star a-star-' + item.stars + ' a-spacing-none'}><span className="a-icon-alt">{item.stars + ' out of 5 stars '}</span><span className="blue">{'(' + item.reviews + ')'}</span></i>
                       </td>
                     ))}
                   </tr>
@@ -163,8 +164,9 @@ export default class App extends Component {
 
               </table>
             </div>
+            <div className="a-row a-spacing-extra-large"></div>
           </div>
-        </React.Fragment>
+        </div>
       );
     }
   }
