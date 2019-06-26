@@ -1,14 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const save = require('../database/index.js');
-
 const app = express();
 
 app.use(express.static(__dirname + '/../client/dist'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// get similar items
+// get similar items >> just loads from db, no search... cant use this
 app.get('/similaritems', function (req, res) {
   save.Item.find(
     {},
@@ -33,20 +32,13 @@ app.get('/similaritems', function (req, res) {
 // request for specific product
 app.get('/api', function (req, res) {
   // create an array out of a cleansed query
-  //let productName = req._parsedOriginalUrl.query;
   let productName = req._parsedOriginalUrl.query.toLowerCase().replace(/[, ]+/g, "");
   productName = decodeURI(productName).split(' ');
-
-  // search the list for any of the items:
-  //  -sort by keyword match:
-  //    --would be better if it sorted highest keyword
-  //      matches first??
-  //  -sort by highest star and reviews counts first
-
-  //  for us to HAVE a THIS ITEM: we need to coordinate to 
-  //  ensure we all have the same item in our stores
-
-  console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>> search query: ', productName);
+  // search keyword matches:
+  //   -would be better if it sorted highest keyword
+  //    matches first??
+  //   -sort by highest star and reviews counts
+  console.log('>>>>>>>>>>>> server/index.js 41 > search query: ', productName);
   save.Item.find(
     { keywords: { $in: productName } },
     null,
@@ -60,18 +52,17 @@ app.get('/api', function (req, res) {
     },
     function (err, items) {
       if (err) {
-        console.log('database/index.js 63 error: ', err);
+        console.log('database/index.js 55 error: ', err);
         res.status(500).send({ error: 'something blew up' });
       }
       console.log(items);
       res.status(200).send({ items: items });
     }
   )
-
 });
 
 let port = process.env.PORT || 3002;
 
 app.listen(port, function () {
-  console.log(`server/index.js 75 >> listening on port ${port}`);
+  console.log(`server/index.js 67 >> listening on port ${port}`);
 });
