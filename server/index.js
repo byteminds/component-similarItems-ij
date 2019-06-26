@@ -46,9 +46,7 @@ app.get('/api', function (req, res) {
 
   console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>> search query: ', productName);
   save.Item.find(
-    {
-      product: { $in: productName }
-    },
+    { keywords: { $in: productName } },
     null,
     {
       sort: {
@@ -62,6 +60,7 @@ app.get('/api', function (req, res) {
         console.log('database/index.js 63 error: ', err);
         res.status(500).send({ error: 'something blew up' });
       }
+      console.log(items);
       res.status(200).send({ items: items });
     }
   )
