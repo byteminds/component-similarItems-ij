@@ -38,8 +38,10 @@ app.get('/api', function (req, res) {
   productName = decodeURI(productName).split(' ');
 
   // search the list for any of the items:
-  //  -sort by number of matches
-  //  -sort by highest star count first (after 'this item')
+  //  -sort by keyword match:
+  //    --would be better if it sorted highest keyword
+  //      matches first??
+  //  -sort by highest star and reviews counts first
 
   //  for us to HAVE a THIS ITEM: we need to coordinate to 
   //  ensure we all have the same item in our stores
@@ -50,8 +52,9 @@ app.get('/api', function (req, res) {
     null,
     {
       sort: {
-        product: 1,
-        stars: -1
+        keywords: 1,
+        stars: -1,
+        reviews: -1
       },
       limit: 6
     },
