@@ -9,12 +9,16 @@ const seedDb = () => {
     // add image attributes data:
     let seed = {};
     let lorem7 = faker.lorem.words(7);
+    let product = 'Apple iPhone 6, ' + lorem7; // <<- randomize some of the title/product info
+    var keywords = product.toLowerCase().replace(/[,]+/g, "");
+    keywords = keywords.split(' ');
 
-    seed.product = 'Apple iPhone 6, ' + lorem7; // <<- randomize some of the title/product info
+    seed.product = product;
+    seed.keywords = keywords;
     seed.imageSrc = 'https://service-similar-products-ij.s3-us-west-1.amazonaws.com/' + documentLimit + '.jpg';
-    seed.imageAlt = 'Apple iPhone 6, ' + lorem7;
+    seed.imageAlt = product;
     seed.imageId = 'comparison-image';
-    seed.description = 'Apple iPhone 6, ' + lorem7 + '. ' + faker.lorem.sentence();
+    seed.description = product + '. ' + faker.lorem.sentence();
     seed.stars = faker.random.number(5); // random number 0 - 5
     seed.reviews = faker.random.number(5000);
     seed.price = faker.random.number(500);

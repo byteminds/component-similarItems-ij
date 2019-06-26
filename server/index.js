@@ -32,11 +32,10 @@ app.get('/similaritems', function (req, res) {
 
 // request for specific product
 app.get('/api', function (req, res) {
-  let productName = req._parsedOriginalUrl.query;
-  // need to clean the query:
-  //  -remove punctuation
-  //  -change all to lowercase
-  //  -split words into an array
+  // create an array out of a cleansed query
+  //let productName = req._parsedOriginalUrl.query;
+  let productName = req._parsedOriginalUrl.query.toLowerCase().replace(/[, ]+/g, "");
+  productName = decodeURI(productName).split(' ');
 
   // search the list for any of the items:
   //  -sort by number of matches
@@ -48,7 +47,7 @@ app.get('/api', function (req, res) {
   console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>> search query: ', productName);
   save.Item.find(
     {
-      product: { $regex: '^(?i)' + productName + '(?i)' }
+      product: { $in: productName }
     },
     null,
     {

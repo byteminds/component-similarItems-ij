@@ -23,6 +23,7 @@ mongoose
 // Create Schema
 const itemSchema = new Schema({
   product: String,
+  keywords: Array,
   imageSrc: String,
   imageAlt: String,
   imageId: String,
@@ -48,6 +49,7 @@ let save = items => {
       // create a document
       // first, gather the entries for the object
       let product = item.product;
+      let keywords = item.keywords;
       let imageSrc = item.imageSrc;
       let imageAlt = item.imageAlt;
       let imageId = item.imageId;
@@ -66,6 +68,7 @@ let save = items => {
       // then put it all together in a new object
       let newItem = new Item({
         product,
+        keywords,
         imageSrc,
         imageAlt,
         imageId,
