@@ -33,7 +33,7 @@ export default class App extends Component {
           <h2 className="a-color-state">Compare with similar items</h2>
           <br />
           <div className="a-tab-container">
-            {/*<h3>Similar Items</h3>*/}
+            {/*<h3>Similar Items</h3> another stretch potential */}
             <div className="a-box-inner">
               <table className="a-bordered a-horizontal-stripes a-spacing-none a-size-base comparison_table">
                 <tbody>

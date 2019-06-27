@@ -3,6 +3,7 @@ const save = require('./database/index.js');
 
 const seedDb = () => {
   let documentLimit = 100;
+  let id = 1;
   let seeds = [];
 
   while (documentLimit > 0) { // generate a document object (seed).
@@ -13,6 +14,7 @@ const seedDb = () => {
     var keywords = product.toLowerCase().replace(/[,]+/g, "");
     keywords = keywords.split(' ');
 
+    seed.id = id;
     seed.product = product;
     seed.keywords = keywords;
     seed.imageSrc = 'https://service-similar-products-ij.s3-us-west-1.amazonaws.com/' + documentLimit + '.jpg';
@@ -33,6 +35,7 @@ const seedDb = () => {
     seeds.push(seed);
     // decrement our documentLimit by 1
     documentLimit -= 1;
+    id++;
   }
   console.log('>>>>>>>>>>>>>>> seeds: ', seeds);
   // once documentLimit is === 0, call our 'save' function to add seeds to db

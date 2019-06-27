@@ -5,7 +5,6 @@ const app = express();
 
 app.use(express.static(__dirname + '/../client/dist'));
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
 
 // get similar items >> just loads from db, no search... cant use this
 app.get('/similaritems', function (req, res) {
@@ -21,7 +20,7 @@ app.get('/similaritems', function (req, res) {
     },
     function (err, items) {
       if (err) {
-        console.log('database/index.js 25 error: ', err);
+        console.log('database/index.js 23 error: ', err);
         res.status(500).send({ error: 'something blew up' });
       }
       res.status(200).send({ items: items }); // now, get it to the app
@@ -29,22 +28,34 @@ app.get('/similaritems', function (req, res) {
   );
 });
 
-// request for specific product
-app.get('/api', function (req, res) {
-  // create an array out of a cleansed query
-  let productName = req._parsedOriginalUrl.query.toLowerCase().replace(/[, ]+/g, "");
+// request for specific product id (using id number: '/getbyid/1' )
+// this gets the id the consumer is looking for
+// next we need to look at the item 'product'
+app.get('/getbyid/:id', function (req, res) {
+  let productId = req.params.id;
+
+  save.Item.find(
+    { id: productId },
+    function (err, items) {
+      if (err) {
+        res.status(400).send();
+      }
+      console.log(items);
+      res.status(200).send({ items: items });
+    }
+  )
+});
+
+// request for specific product (using keyword(s))
+app.get('/getbykeywords/:keywords', function (req, res) {
+  let productName = req.params.keywords;
   productName = decodeURI(productName).split(' ');
-  // search keyword matches:
-  //   -would be better if it sorted highest keyword
-  //    matches first??
-  //   -sort by highest star and reviews counts
-  console.log('>>>>>>>>>>>> server/index.js 41 > search query: ', productName);
   save.Item.find(
     { keywords: { $in: productName } },
     null,
     {
       sort: {
-        keywords: 1,
+        keywords: 1, // does not sort by number of matches 
         stars: -1,
         reviews: -1
       },
@@ -52,7 +63,7 @@ app.get('/api', function (req, res) {
     },
     function (err, items) {
       if (err) {
-        console.log('database/index.js 55 error: ', err);
+        console.log('database/index.js 74 error: ', err);
         res.status(500).send({ error: 'something blew up' });
       }
       console.log(items);
@@ -64,5 +75,5 @@ app.get('/api', function (req, res) {
 let port = process.env.PORT || 3002;
 
 app.listen(port, function () {
-  console.log(`server/index.js 67 >> listening on port ${port}`);
+  console.log(`server/index.js 86 >> listening on port ${port}`);
 });
