@@ -1,8 +1,8 @@
 const faker = require('faker');
-const save = require('./database/index.js');
+const db = require('./database/index.js');
 
 const seedDb = () => {
-  let documentLimit = 100;
+  let documentLimit = 500;
   let id = 1;
   let seeds = [];
 
@@ -15,9 +15,10 @@ const seedDb = () => {
     keywords = keywords.split(' ');
 
     seed.id = id;
+    seed.relatedTo = faker.random.number(99) + 1;
     seed.product = product;
     seed.keywords = keywords;
-    seed.imageSrc = 'https://service-similar-products-ij.s3-us-west-1.amazonaws.com/' + documentLimit + '.jpg';
+    seed.imageSrc = 'https://service-similar-products-ij.s3-us-west-1.amazonaws.com/' + (faker.random.number(99) + 1) + '.jpg';
     seed.imageAlt = product;
     seed.imageId = 'comparison-image';
     seed.description = product + '. ' + faker.lorem.sentence();
@@ -37,9 +38,8 @@ const seedDb = () => {
     documentLimit -= 1;
     id++;
   }
-  console.log('>>>>>>>>>>>>>>> seeds: ', seeds);
   // once documentLimit is === 0, call our 'save' function to add seeds to db
-  save.save(seeds);
+  db.save(seeds);
 };
 
 seedDb();
