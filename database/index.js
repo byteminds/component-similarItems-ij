@@ -92,17 +92,15 @@ let save = items => {
         operatingSystem
       });
 
-      console.log(newItem.relatedTo);
-
       newItem.save().catch(err => {
         console.log(
-          'database/index.js 99 > Error creating new document: ',
+          'database/index.js 97 > Error creating new document: ',
           err
         );
       });
     });
   } else {
-    console.log('database/index.js 105 > Error creating new document');
+    console.log('database/index.js 103 > Error creating new document');
   }
 };
 

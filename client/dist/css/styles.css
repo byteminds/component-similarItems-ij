@@ -29,7 +29,6 @@ body {
   font-weight: 400;
   text-rendering: optimizeLegibility;
   color: #111;
-  min-height: 120vh;
 }
 
 #comparisonWidget_feature_div {

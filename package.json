@@ -4,7 +4,7 @@
   "description": "Amazon item page (iPhone), similar-products service",
   "main": "server/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "react-dev": "webpack -d --watch",
     "start": "nodemon server/index.js",
     "db-seeder": "node seeder.js"
@@ -23,15 +23,18 @@
     "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
+    "@shelf/jest-mongodb": "^1.0.1",
     "babel-loader": "^8.0.6",
     "babel-preset-react": "^6.24.1",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
     "faker": "^4.1.0",
     "jest": "^24.8.0",
+    "puppeteer": "^1.18.1",
     "webpack": "^4.34.0",
     "webpack-cli": "^3.3.4"
   },
   "dependencies": {
+    "axios": "^0.19.0",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "jquery": "^3.4.1",

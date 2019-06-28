@@ -12,7 +12,7 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    $.get('/similaritems/41', items => {
+    $.get('/similaritems/46', items => {
       this.setState({
         isLoaded: true,
         items: items.items
