@@ -1,5 +1,17 @@
 const functions = require('./functions');
 
+// ToDo: add tests for 'seeder.js'
+// eg:
+// check db connection
+// check for db
+//   if db exists, 
+//     drop db
+//   else,
+//     run seeder and check for
+//   - instance of db name
+//   - collection name
+//   - number of 'items' compared with 'documentLimit' count 
+
 describe('`similaritems` API calls by ID', () => {
 
   test('Should fetch `relatedTo` from DB by ID', () => {

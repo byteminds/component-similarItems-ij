@@ -23,7 +23,7 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 - MongoDB (local and/or remote) Follow intructions from mongodb website to [install MongoDB locally](https://docs.mongodb.com/guides/server/install/)
 
 ## Development
-- npm run db-seeder - seeder.js populates the database.
+- npm run db-seeder - seeder.js populates the database
 - npm run start - starts the server
 - npm run react-dev - to compile/watch
 - npm run test - to run Jest tests
