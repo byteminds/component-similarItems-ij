@@ -22,7 +22,10 @@ mongoose
 
 // Create Schema
 const itemSchema = new Schema({
+  id: Number,
+  relatedTo: Number, // 'foreign key' number for now... should become array of id's
   product: String,
+  keywords: Array,
   imageSrc: String,
   imageAlt: String,
   imageId: String,
@@ -47,7 +50,10 @@ let save = items => {
     items.forEach(item => {
       // create a document
       // first, gather the entries for the object
+      let id = item.id;
+      let relatedTo = item.relatedTo;
       let product = item.product;
+      let keywords = item.keywords;
       let imageSrc = item.imageSrc;
       let imageAlt = item.imageAlt;
       let imageId = item.imageId;
@@ -65,7 +71,10 @@ let save = items => {
       let operatingSystem = item.operatingSystem;
       // then put it all together in a new object
       let newItem = new Item({
+        id,
+        relatedTo,
         product,
+        keywords,
         imageSrc,
         imageAlt,
         imageId,
@@ -85,13 +94,13 @@ let save = items => {
 
       newItem.save().catch(err => {
         console.log(
-          'database/index.js 88 > Error creating new document: ',
+          'database/index.js 97 > Error creating new document: ',
           err
         );
       });
     });
   } else {
-    console.log('database/index.js 94 > Error creating new document');
+    console.log('database/index.js 103 > Error creating new document');
   }
 };
 

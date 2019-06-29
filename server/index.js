@@ -1,28 +1,26 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const save = require('../database/index.js');
-
+const db = require('../database/index.js');
 const app = express();
 
 app.use(express.static(__dirname + '/../client/dist'));
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
 
-// get similar items
-app.get('/similaritems', function (req, res) {
-  save.Item.find(
-    {},
+// get similar items (id in 'relatedTo')
+app.get('/similaritems/:relatedTo', function (req, res) {
+  db.Item.find(
+    { relatedTo: req.params.relatedTo },
     null,
     {
       sort: {
-        product: 1,
-        stars: -1
+        stars: -1,
+        reviews: -1
       },
       limit: 6
     },
     function (err, items) {
       if (err) {
-        console.log('database/index.js 25 error: ', err);
+        console.log('database/index.js 23 error: ', err);
         res.status(500).send({ error: 'something blew up' });
       }
       res.status(200).send({ items: items }); // now, get it to the app
@@ -30,8 +28,32 @@ app.get('/similaritems', function (req, res) {
   );
 });
 
+// get similar items (term(s) in 'keywords')
+app.get('/getbykeywords/:keywords', function (req, res) {
+  let productName = req.params.keywords;
+  productName = decodeURI(productName).split(' ');
+  db.Item.find(
+    { keywords: { $in: productName } },
+    null,
+    {
+      sort: {
+        stars: -1,
+        reviews: -1
+      },
+      limit: 6
+    },
+    function (err, items) {
+      if (err) {
+        console.log('database/index.js 48 error: ', err);
+        res.status(500).send({ error: 'something blew up' });
+      }
+      res.status(200).send({ items: items });
+    }
+  )
+});
+
 let port = process.env.PORT || 3002;
 
 app.listen(port, function () {
-  console.log(`server/index.js 42 >> listening on port ${port}`);
+  console.log(`server/index.js 60 >> listening on port ${port}`);
 });
